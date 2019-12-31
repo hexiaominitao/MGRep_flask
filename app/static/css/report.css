@@ -1,0 +1,184 @@
+@page {
+    margin: 0;
+    size: 21cm 29.7cm;
+}
+
+#slogan {
+    margin: 30%;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-30%);
+    font-family: '隶书';
+    font-size: 26pt;
+    width: 40%;
+}
+
+#logo {
+    margin: 40% 52%;
+    position: absolute;
+    top: 10%;
+    transform: translateY(-80%);
+    width: 140px;
+    height: 70px;
+}
+
+#text-cover {
+    width: 60%;
+    margin: 30% 30%;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+}
+
+#cover-cn {
+    margin: auto 8%;
+    font-size: 26pt;
+    border-bottom: solid 1px black;
+    text-align: center;
+}
+
+#cover-en {
+    margin: auto 2%;
+    padding: 2%;
+    color: red;
+    font-size: 20pt;
+    text-align: center;
+}
+
+#color-1 {
+    width: 120px;
+    height: 220px;
+    margin: -2%;
+    background: rgb(85, 142, 213);
+}
+
+#color-2 {
+    width: 120px;
+    height: 220px;
+    margin: -2%;
+    background: rgb(55, 96, 146);
+}
+
+#color-3 {
+    width: 120px;
+    height: 220px;
+    margin: -2%;
+    background: rgb(166, 166, 166);
+}
+
+#color-4 {
+    width: 120px;
+    height: 220px;
+    margin: -2%;
+    background: rgb(217, 217, 217);
+}
+
+#content {
+    margin: 10% 10%;
+}
+
+
+#content-header {
+    height: 80px;
+    margin: 0 0 15%;
+}
+
+#content-header-left {
+    float: left;
+    margin: auto;
+    font: 700 24pt/80px "微软雅黑";
+    color: aliceblue;
+    text-align: center;
+    background: rgb(55, 96, 146);
+    width: 50%;
+    height: 80px;
+}
+
+#content-header-right {
+    float: left;
+    margin: auto;
+    font: 700 24pt/80px "微软雅黑";
+    color: black;
+    text-align: center;
+    background: rgb(217, 217, 217);
+    width: 50%;
+    height: 80px;
+}
+
+#content-footer {
+    margin-top: 15%;
+}
+
+#content-footer-text {
+    margin: 7% 14%
+}
+
+#content-footer-img {
+    margin: 11% 9%
+}
+
+#content-footer-left {
+    float: left;
+    margin: auto;
+    text-align: center;
+    background: rgb(217, 217, 217);;
+    width: 35%;
+    height: 140px;
+}
+
+#content-footer-right {
+    float: left;
+    margin: auto;
+    font: 400 9pt/20px "微软雅黑";
+    color: rgb(255, 255, 255);
+    text-align: left;
+    background: rgb(55, 96, 146);
+    width: 65%;
+    height: 140px;
+}
+
+#company {
+    font: 400 10.5pt/24px "微软雅黑";
+}
+
+/* #content-list{
+float: left;
+} */
+
+.content-row-one {
+    margin: 3% auto;
+}
+
+.content-t-one {
+    float: left;
+    width: 16%;
+    text-align: center;
+    margin: auto;
+    font: 700 12pt/30px '微软雅黑';
+}
+
+.content-c-one {
+    margin: auto 0 auto 55%;
+    font: 400 10.5pt/30px '微软雅黑';
+}
+
+.content-row {
+    margin: 3% auto;
+}
+
+.content-t {
+    float: left;
+    width: 16%;
+    text-align: center;
+    margin: auto;
+    font: 700 12pt/130px '微软雅黑';
+}
+
+.content-c {
+    margin: auto 0 auto 55%;
+    font: 400 10.5pt/30px '微软雅黑';
+}
+
+.cover {
+    page-break-after: always;
+}

@@ -1,0 +1,281 @@
+#mg_code {
+    string-set: mg content();
+}
+
+#rep_date {
+    string-set: date content();
+}
+
+.rep-code {
+    float: left;
+    margin-top: 3%;
+    margin-right: 12%;
+}
+
+.rep-date {
+    margin-top: 3%;
+    margin-right: 12%;
+    float: left;
+}
+
+.rep-page {
+    margin-top: 3%;
+    float: left;
+}
+
+.info-content {
+    margin-top: 2%;
+}
+
+.info-title {
+    font: 700 11pt/40px '微软雅黑';
+    color: aliceblue;
+    text-align: center;
+    border-radius: 10px;
+    background: rgb(55, 96, 146);
+    width: 12%;
+    height: 40px;
+    margin-left: 1%;
+}
+
+.info-text {
+    margin: 2% auto;
+    border-top-style: solid;
+    border-top-width: 1.5px;
+    border-top-color: rgb(55, 96, 146);
+}
+
+.info-text-re {
+    margin: 2% auto;
+    border-top-style: solid;
+    border-top-width: 1.5px;
+    border-top-color: rgb(55, 96, 146);
+}
+
+.row {
+    margin-top: 1%;
+}
+
+.item {
+    float: left;
+    width: 10.8%;
+    font: 700 10pt '微软雅黑';
+    margin: 1% auto;
+}
+
+.cell {
+    float: left;
+    width: 22.5%;
+    font: 400 10pt '微软雅黑';
+    margin: 1% auto;
+}
+
+.item-2 {
+    float: left;
+    width: 10.8%;
+    font: 700 10pt '微软雅黑';
+    margin: 1% auto;
+}
+
+.cell-2 {
+     float: left;
+    width: 38%;
+    font: 400 10pt '微软雅黑';
+    margin: 1% auto;
+}
+
+.row-re {
+    margin: auto;
+}
+
+.item-re {
+    float: left;
+    width: 30%;
+    font: 700 10pt '微软雅黑';
+    margin: 1% auto;
+}
+
+.cell-re {
+    width: 70%;
+    float: left;
+    font: 400 10pt '微软雅黑';
+    margin: 1% auto;
+}
+
+.cell-gene {
+    width: 20%;
+    float: left;
+    font: 400 10pt '微软雅黑';
+    margin-bottom: 1%;
+}
+
+.cell-mut {
+    width: 80%;
+    float: left;
+    font: 400 10pt '微软雅黑';
+    margin-bottom: 1%;
+}
+
+.seq-content {
+    margin-top: 2%;
+    text-indent: 30px;
+    font: 400 10pt '微软雅黑';
+}
+
+.statement {
+    clear: both;
+    margin-bottom: 10%;
+    padding-top: 1%;
+    font: 300 9pt '微软雅黑';
+    border-top-style: solid;
+    border-top-width: 1.5px;
+    border-top-color: rgb(55, 96, 146);
+}
+
+.page-footer {
+    border-top: solid 1.5px;
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    bottom: 2%;
+}
+
+.page-footer-text {
+    margin-left: 1%;
+    font: 400 8pt '微软雅黑';
+}
+
+.sign {
+    clear: both;
+    border-top-style: solid;
+    border-top-width: 1.5px;
+    border-top-color: rgb(55, 96, 146);
+}
+
+.seqer {
+    float: left;
+    margin-top: 5%;
+    margin-left: 10%;
+    width: 40%;
+    font: 700 10pt '微软雅黑';
+}
+
+.checker {
+    float: left;
+    margin-top: 5%;
+    width: 40%;
+    font: 700 10pt '微软雅黑';
+}
+
+.bot-bor {
+    clear: both;
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-bottom-color: rgb(55, 96, 146);
+}
+
+.top-bot {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgb(55, 96, 146);
+}
+
+/*突变*/
+.title {
+    background: rgb(217, 217, 217);
+    font: 700 10.5pt "微软雅黑";
+    line-height: 220%;
+    margin-top: 2%;
+}
+
+.table {
+    margin: 0 auto;
+    clear: both;
+    border-top: solid 1.5px rgb(55, 96, 146);
+    border-bottom: solid 1.5px rgb(55, 96, 146);
+}
+
+.thead {
+    margin: 1% auto -1%;
+    padding-bottom: 1%;
+    font: 700 10pt "微软雅黑";
+    text-align: center;
+    border-bottom: solid 0.5px rgb(55, 96, 146);
+}
+
+.tbody-none {
+    margin: 1% auto;
+    font: 400 10pt "微软雅黑";
+    text-align: center;
+    padding-top: 1%;
+    border-top: solid 0.5px rgb(55, 96, 146);
+}
+
+.tbody {
+    font: 400 10pt "微软雅黑";
+    margin: 1% auto;
+    padding-top: 1%;
+    border-top: dashed 1px rgb(55, 96, 146);
+}
+
+.tbody-one {
+    border-top: solid 0.5px rgb(55, 96, 146);
+}
+
+.gene {
+    float: left;
+    width: 20%;
+}
+
+.pecent {
+    float: left;
+    width: 10%;
+}
+
+.mutation {
+    float: left;
+    width: 30%;
+}
+
+
+/*基因介绍*/
+
+.item-gene {
+    padding: 1%;
+    border-top: dashed 1px rgb(55, 96, 146);
+    display: table;
+}
+
+.gene-c {
+    text-align: center;
+    font: 700 10pt/100% "微软雅黑";
+    width: 10%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.info {
+    text-indent: 30px;
+    font: 400 10pt "微软雅黑";
+}
+
+.item-one {
+    border-top: solid 0.5px rgb(55, 96, 146);
+}
+
+.gene-non,
+.exon {
+    float: left;
+    width: 10%;
+}
+
+.mutation-non {
+    float: left;
+    width: 19%;
+}
+
+.dna,
+.acid {
+    float: left;
+    width: 25%;
+}

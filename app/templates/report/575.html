@@ -1,0 +1,304 @@
+{% extends "base_report.html" %}
+{% block title %}{{ mg_code }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/575.css') }}">
+{% endblock %}
+{% block content %}
+<!--基本信息-->
+<div class="cover">
+    <div class="info-content">
+        <div class='info-title'>基本信息</div>
+        <div class='info-text'>
+            <div class='row'>
+                <div class="item">姓名</div>
+                <div class='cell'>张三</div>
+                <div class="item">性别</div>
+                <div class='cell'>女</div>
+                <div class="item">年龄</div>
+                <div class='cell'>56岁</div>
+            </div>
+            <div class='row'>
+                <div class="item">患者ID</div>
+                <div class='cell'>442825196301022521</div>
+                <div class="item">家族史</div>
+                <div class='cell'>无</div>
+                <div class="item">用药史</div>
+                <div class='cell'>化疗</div>
+            </div>
+            <div class='row'>
+                <div class="item">住院号</div>
+                <div class='cell'>&nbsp;</div>
+                <div class="item">临床诊断</div>
+                <div class='cell'>乳腺癌转移</div>
+                <div class="item">病理诊断</div>
+                <div class='cell'>淋巴结内查见转移癌</div>
+            </div>
+            <div class='row'>
+                <div class="item">肿瘤样本ID</div>
+                <div class='cell' id="mg_code">MG1976840195T</div>
+                <div class="item">取材部位</div>
+                <div class='cell'>左锁骨上淋巴结</div>
+                <div class="item">采样日期</div>
+                <div class='cell'>&nbsp;</div>
+            </div>
+            <div class='row'>
+                <div class="item">样本类型</div>
+                <div class='cell'>FFPE样本广州医科大学附属肿瘤医院广州医科大学附属肿瘤医院广州医科大学附属肿瘤医院</div>
+                <div class="item">采样方式</div>
+                <div class='cell'>手术</div>
+                <div class="item">收样日期</div>
+                <div class='cell' id="rep_date">2019-09-30</div>
+            </div>
+            <div class='row'>
+                <div class="item">对照样本ID</div>
+                <div class='cell'>MG1976840195N</div>
+                <div class="item">取材部位</div>
+                <div class='cell'>外周血</div>
+                <div class="item">采样日期</div>
+                <div class='cell'>&nbsp;</div>
+            </div>
+            <div class='row'>
+                <div class="item">样本类型</div>
+                <div class='cell'>全血</div>
+                <div class="item">采样方式</div>
+                <div class='cell'>抽血</div>
+                <div class="item">收样时间</div>
+                <div class='cell'>2019-09-30</div>
+            </div>
+            <div class='row'>
+                <div class="item">送检医生</div>
+                <div class='cell'>谢国丰</div>
+                <div class="item">送检科室</div>
+                <div class='cell'>放疗一科</div>
+                <div class="item">送检单位</div>
+                <div class='cell'>广州医科大学附属肿瘤医院</div>
+            </div>
+        </div>
+        <p class='statement'>*本报告中的病理诊断和临床诊断信息由受检者送检时提供，
+            非测结果。本报告不对这些信息的准确性负责。</p>
+        <div class='info-title'>检测内容</div>
+        <p class="seq-content">迈景基因泛肿瘤基因检测涵盖575个癌症机制
+            和靶向治疗密切相关的基因，利用探针杂交捕获和高通量测序法，
+            检测575个基因的全部编码外显子区，
+            全面精准地检测肿瘤临床相关性的基因突变、扩增及重排（融合）等变异。
+            详细技术说明参见《附录2:检测方法与局限性》。</p>
+    </div>
+</div>
+<!--结果小结-->
+<div class="cover">
+    <div class="info-content">
+        <div class='info-title'>结果小结</div>
+        <div class="info-text-re">
+            <div class='row-re  '>
+                <div class="item-re">检测内容</div>
+                <div class='cell-re'><b>检测结果</b>
+                </div>
+                <div class='row-re'>
+                    <div class="item-re">体细胞变异</div>
+                    <div class='cell-re'>共检出10个体细胞变异，其中具有明确或潜在临床意义的变异有3个。</div>
+                </div>
+                <div class='row-re'>
+                    <div class="item-re">体细胞变异</div>
+                    <div class='cell-re'>
+                        <div>
+                            <div class="cell-gene">TP53基因</div>
+                            <div class="cell-mut">(p.Gly108fs) c.323_329delGTTTCCG</div>
+                        </div>
+                        <div>
+                            <div class="cell-gene">ARID1A基因</div>
+                            <div class="cell-mut">(p.Lys1862Arg) c.5585A>G</div>
+                        </div>
+                        <div>
+                            <div class="cell-gene">FGFR1基因</div>
+                            <div class="cell-mut">Amplification</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='row-re'>
+                    <div class="item-re">肿瘤突变负荷（TMB）</div>
+                    <div class='cell-re'>4.3个突变/Mb</div>
+                </div>
+                <div class='row-re'>
+                    <div class="item-re">微卫星不稳定性（MSI）</div>
+                    <div class='cell-re'>微卫星稳定型（MSS）</div>
+                </div>
+                <div class='row-re'>
+                    <div class="item-re">PD-L1表达率</div>
+                    <div class='cell-re'>0%（引自免疫组化检测结果）</div>
+                </div>
+                <div class='row-re'>
+                    <div class="item-re">胚系致病变异</div>
+                    <div class='cell-re'>未检测到</div>
+                </div>
+                <div class='row-re'>
+                    <div class="item-re">样本总体质量评估</div>
+                    <div class='cell-re'>合格</div>
+                </div>
+            </div>
+        </div>
+        <div class="sign">
+            <div class='seqer'>检测者:</div>
+            <div class="checker">审核者:</div>
+        </div>
+    </div>
+</div>
+<!--1类,2类结果-->
+<div class="cover">
+    <div class="title">具有明确临床意义的变异及解读(Ⅰ类)：</div>
+    <div class="table">
+        <div class="thead">
+            <div class='gene'>基因变异</div>
+            <div class='pecent'>丰度</div>
+            <div class="mutation">变异解读</div>
+            <div class="drug">靶向药物 (敏感性，证据等级)</div>
+        </div>
+        <!--if-->
+        <div>
+            <div class='tbody tbody-one'>
+                <div class='gene'>基因变异</div>
+                <div class='pecent'>丰度</div>
+                <div class="mutation">变异解读</div>
+                <div class="drug">靶向药物 (敏感性，证据等级)</div>
+            </div>
+            <div class='tbody'>
+                <div class='gene'>基因变异</div>
+                <div class='pecent'>丰度</div>
+                <div class="mutation">变异解读</div>
+                <div class="drug">靶向药物 (敏感性，证据等级)</div>
+            </div>
+        </div>
+        <!--else-->
+        <div class="tbody-none">该样本未检出具有明确临床意义的变异（I类变异）。</div>
+    </div>
+</div>
+<!--基因介绍-->
+<div class="cover">
+    <div class="title">基因介绍</div>
+    <div class="table" ref='gene'>
+        <div class="item-gene item-one">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+        <div class="item-gene">
+            <div class="gene-c">TP53</div>
+            <div class="info">TP53基因编码抑制癌症的蛋白，此蛋白可以调节靶基因的表达，从而调控细胞周期停滞、细胞凋亡、细胞衰老、DNA修复或者改变细胞的新陈代谢。
+                TP53在人类癌症中是最高频率的突变（>50%），说明其在预防癌症有重要作用。TP53编码蛋白与DNA靶向和调节基因表达，预防基因组的突变有关。
+                有研究表明TP53基因突变可能跟男性胰腺癌、结直肠癌和子宫内膜癌的发生风险有关。
+            </div>
+        </div>
+    </div>
+</div>
+<!--3类结果-->
+<div class="cover">
+    <div class="title">临床意义尚不明确的变异列表(Ⅲ类变异)：</div>
+    <div class="table">
+        <div class="thead">
+            <div class='gene-non'>基因</div>
+            <div class='mutation-non'>变异类型</div>
+            <div class='exon'>外显子</div>
+            <div class="dna">cDNA改变</div>
+            <div class="acid">氨基酸改变</div>
+            <div>丰度</div>
+        </div>
+        <div>
+            <div class='tbody tbody-one'>
+                <div class='gene-non'>基因</div>
+                <div class='mutation-non'>变异类型</div>
+                <div class='exon'>外显子</div>
+                <div class="dna">cDNA改变</div>
+                <div class="acid">氨基酸改变</div>
+                <div>丰度</div>
+            </div>
+            <div class='tbody'>
+                <div class='gene-non'>基因</div>
+                <div class='mutation-non'>变异类型</div>
+                <div class='exon'>外显子</div>
+                <div class="dna">cDNA改变</div>
+                <div class="acid">氨基酸改变</div>
+                <div>丰度</div>
+            </div>
+        </div>
+        <div class="tbody-none">该样本未检出临床意义尚不明确的变异（III类变异）。</div>
+    </div>
+</div>
+{% endblock %}

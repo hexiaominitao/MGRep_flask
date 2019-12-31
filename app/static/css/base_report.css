@@ -1,0 +1,70 @@
+@page :first {
+    margin: 5% 6%;
+    size: 21cm 29.7cm;
+
+}
+
+@page covers {
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    margin: 5% 6%;
+    size: 21cm 29.7cm;
+
+    @top-right {
+        /*counter-increment: page -3;*/
+        content: counter(page) '/' counter(pages);
+        margin-right: 2%;
+        margin-bottom: 0;
+        vertical-align: bottom;
+        font: 400 10pt '阿里巴巴普惠体';
+    }
+}
+
+
+
+@page covers{
+    @top-left {
+        content: '.';
+        color: aliceblue;
+        width: 80px;
+        height: 42px;
+        display: block;
+        background-image: url(http://192.168.1.34:5000/static/img/mg_v.png);
+        background-size: 80px 42px;
+    }
+}
+
+@page covers {
+    @top-center {
+        content: "报告编号:" string(mg) "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0报告日期:" string(date);
+        margin-bottom: 0;
+        vertical-align: bottom;
+        font: 400 10pt '阿里巴巴普惠体';
+    }
+}
+
+@page covers {
+    @bottom-left {
+        content: "本报告及其结果仅供医生参考,不作为临床诊断依据。";
+        margin-left: 0;
+        font: 400 8pt '阿里巴巴普惠体';
+        vertical-align: top;
+        margin-top: 1%;
+    }
+}
+
+.cover {
+    page-break-after: always;
+    counter-increment: totalPage;
+}
+
+.cover-c {
+    counter-reset: page;
+    page-break-after: always;
+}
+
+.content {
+    page: covers;
+}
+
+

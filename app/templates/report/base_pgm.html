@@ -1,0 +1,658 @@
+{% extends "base_report.html" %}
+{% block title %}{{ mg_code }}{% endblock %}
+{% block head %}
+<!--<link rel="stylesheet" href="{{ url_for('static', filename='css/575.css') }}">-->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/12.css') }}">
+{% endblock %}
+{% block content %}
+<!--基本信息-->
+<div class="content">
+    <div class="cover">
+        <div class="info-content">
+            <div class='info-title'>基本信息</div>
+            <div class="table-border">
+                <div class="table-info">
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">姓名:</div>
+                        <div class="cell-info-1 cell">{{ sam.patient_info.name }}</div>
+                        <div class="item-info-2 item">性别:</div>
+                        <div class="cell-info-2 cell">{{ sam.patient_info.gender }}</div>
+                        <div class="item-info-3 item">年龄:</div>
+                        <div class="cell-info-3 cell">{{ sam.patient_info.age }}</div>
+                    </div>
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">患者ID:</div>
+                        <div class="cell-info-1 cell">{{ sam.patient_info.ID_number }}</div>
+                        <div class="item-info-2 item">民族:</div>
+                        <div class="cell-info-2 cell">{{ sam.patient_info.nation }}</div>
+                        <div class="item-info-3 item">籍贯:</div>
+                        <div class="cell-info-3 cell">{{ sam.patient_info.origo }}</div>
+                    </div>
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">家族史：</div>
+                        <div class="cell-info-1 cell">{{ sam.patient_info.family_info.diseases }}</div>
+                        <div class="item-info-3 item">用药史：</div>
+                        <div class="cell-info-3 cell">{{ sam.patient_info.treat_info.name }}</div>
+                    </div>
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">临床诊断：</div>
+                        <div class="cell-info-1 cell">{{ sam.diagnosis }}</div>
+                        <div class="item-info-3 item">病理诊断：</div>
+                        <div class="cell-info-3 cell">{{ sam.pathological }}</div>
+                    </div>
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">送检单位：</div>
+                        <div class="cell-info-1 cell">{{ sam.hosptial }}</div>
+                        <div class="item-info-2 item">送检科室：</div>
+                        <div class="cell-info-2 cell">{{ sam.room }}</div>
+                        <div class="item-info-3 item">送检医生：</div>
+                        <div class="cell-info-3 cell">{{ sam.doctor }}</div>
+                    </div>
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">样本病理号：</div>
+                        <div class="cell-info-1 cell"></div>
+                        <div class="item-info-2 item">采样方式：</div>
+                        <div class="cell-info-2 cell"></div>
+                        <div class="item-info-3 item">采样时间：</div>
+                        <div class="cell-info-3 cell"></div>
+                    </div>
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">样本ID：</div>
+                        <div class="cell-info-1 cell" id="mg_code">{{ sam.req_mg }}</div>
+                        <div class="item-info-2 item">样本类型：</div>
+                        <div class="cell-info-2 cell">{{ sam.sample_type }}</div>
+                        <div class="item-info-3 item">收样时间：</div>
+                        <div class="cell-info-3 cell">{{ sam.recive_room_date }}</div>
+                    </div>
+                    <div class="tbody-info">
+                        <div class="item-info-1 item">样本来源：</div>
+                        <div class="cell-info-1 cell"></div>
+                        <div class="item-info-4 item">肿瘤细胞比例：</div>
+                        <div class="cell-info-3 cell">60%</div>
+                        <div class="item-info-3 item">报告时间：</div>
+                        <div class="cell-info-3 cell" id="rep_date">{{ sam.recive_room_date }}</div>
+                    </div>
+                    <div class="tbody-info last-tr">
+                        <div class="item-info-1 item">检测项目：</div>
+                        <div class="cell-info-3 cell">肿瘤{{ item }}基因检测</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class='statement'>*本报告中的病理诊断和临床诊断信息由受检者送检时提供，
+            非测结果。本报告不对这些信息的准确性负责。</p>
+        <div class='info-title'>检测内容</div>
+        <p class="seq-content">{{ report_config['检测内容'] }}</p>
+    </div>
+
+    <!--结果详情 12基因-->
+    <div class="cover">
+        <div class='info-title'>结果详情</div>
+        <div class="table">
+            <div class="thead">
+                <div class="gene">基因</div>
+                <div class="type">检测的变异类型</div>
+                <div class="result">检测结果</div>
+                <div class="percent">丰度</div>
+                <div class="name_mu">临床常用名称</div>
+                <div class="grade_mu">临床意义级别</div>
+            </div>
+            <div class="tbody tbody-one">
+                <div class="gene">{{ gene_one.name }}</div>
+                <div class="type">{{ gene_one.mutation }}</div>
+                <div class="gene-result">
+                    <div class="gene-table">
+                        {% for res in gene_one.result %}
+                        {% if res.len==1 %}
+                        {% endif %}
+                        <div class="gene-result-1">
+                            <div class="result-1">{{ res.mu_name }}</div>
+                            <div class="percent-1">{{ res.mu_af }}</div>
+                            <div class="name_mu-1">{{ res.mu_name_usual }}</div>
+                            <div class="grade_mu-1">{{ res.grade }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% for gene in out_result %}
+            <div class="tbody">
+                <div class="gene">{{ gene.name }}</div>
+                <div class="type">{{ gene.mutation }}</div>
+                <div class="gene-result">
+                    <div class="gene-table">
+                        {% if gene.count > 1 %}
+                        <div class="gene-result-1">
+                            <div class="result-1">{{ gene.result[0].mu_name }}</div>
+                            <div class="percent-1">{{ gene.result[0].mu_af }}</div>
+                            <div class="name_mu-1">{{ gene.result[0].mu_name_usual }}</div>
+                            <div class="grade_mu-1">{{ gene.result[0].grade }}</div>
+                        </div>
+                        {% for res in gene.result[1:] %}
+                        <div class="gene-result-2">
+                            <div class="result-1">{{ res.mu_name }}</div>
+                            <div class="percent-1">{{ res.mu_af }}</div>
+                            <div class="name_mu-1">{{ res.mu_name_usual }}</div>
+                            <div class="grade_mu-1">{{ res.grade }}</div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        {% for res in gene.result %}
+                         <div class="gene-result-1">
+                            <div class="result-1">{{ res.mu_name }}</div>
+                            <div class="percent-1">{{ res.mu_af }}</div>
+                            <div class="name_mu-1">{{ res.mu_name_usual }}</div>
+                            <div class="grade_mu-1">{{ res.grade }}</div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="note-result">
+            <div class="note-title">注:</div>
+            <div class="note-content">1. 基因变异与药物敏感性的证据级别根据ASCO和CAP指南[PMID:
+                27993330]共分为ABCD四个等级：
+                A级（FDA批准，或来自于专业临床指南），
+                B级（较大规模的临床研究证实，且取得临床专家共识），
+                C级（在其他癌种中的A级证据、或者已作为临床试验的筛选入组标准、或者有多个小型研究支持），
+                D级（临床前研究、或者是病例报道支持）。
+                变异按照临床意义的重要性分为四个等级：Ⅰ类变异（具有A级或B级证据），
+                Ⅱ类变异（具有C级或D级证据），Ⅲ类变异（尚无相关临床证据），
+                IV类变异（已知无临床意义变异，报告未列出）。
+            </div>
+            <div class="note-content">2. 基因变异的命名参考HGVS建议规则，拷贝数变异（包括基因扩增和基因缺失）
+                命名参考ISCN规则，人类参考基因组版本为HG19。
+            </div>
+            <div class="note-content">3. 基因变异所对应的靶向药物敏感性来源于迈景基因内部数据库MGDB，
+                赛默飞世尔的Oncomine数据库，同时参考NCCN指南、OncoKB [PMID:
+                28890946]，CIVIC数据库[PMID: 28138153]等公共数据库内容。结果仅供临床参考。
+            </div>
+        </div>
+        <div class="sign">
+            <div class='seqer'>检测者:</div>
+            <div class="checker">审核者:</div>
+        </div>
+    </div>
+
+    <!--综合解读-->
+    <div class="cover">
+        <div class="block-result">
+            <div class='info-title'>综合解读</div>
+            <div class="seq-content">检测到{{ dict_mutation['mu_count'] }}个变异：
+                {{ dict_mutation['mu_name'] }}。</div>
+            {% for exp in l_mutation %}
+            <div class="seq-content">{{ exp.explanations }}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="block-result">
+            <div class="info-title">特殊说明</div>
+            <p class="seq-content">无。</p>
+        </div>
+        <div class="block-result">
+            <div class="info-title" style="width: 18%">进一步检测建议</div>
+            <p class="seq-content">无。</p>
+        </div>
+    </div>
+
+    <!--附录-->
+    <div class="cover">
+        <div class="block-result">
+            <div class='info-title' style="width: 25%">附录A：检测方法和局限性</div>
+            <div class="content-title">检测方法</div>
+            <p class="seq-content">{{ report_config['检测方法'] }}</p>
+            <div class="content-title">局限性说明</div>
+            <div class="limit-content">
+                {% for content_item in report_config['局限性说明'] %}
+                <div>
+                    <div class="code-number">{{ loop.index }}.</div>
+                    <div class="note-content-1">{{ content_item }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="block-result">
+            <div class='info-title' style="width: 18%">附录B:基因列表</div>
+            <div class="table">
+                <div class="thead appendix-title">
+                    <div class="appendix-left">项目</div>
+                    <div class="appendix-right">基因列表</div>
+                </div>
+                <div class="tbody-appendix">
+                    <div class="appendix-left">
+                        DNA
+                    </div>
+                    <div class="appendix-right">
+                        {% for gene_l in script_gene %}
+                        <div class="gene-list">
+                            {% for gene_s in gene_l %}
+                            <div class="gene-one-name">{{ gene_s }}</div>
+                            <div class="gene-one-script">{{ trans_gene[gene_s] }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="tbody-appendix">
+                    <div class="appendix-left">
+                        RNA
+                    </div>
+                    <div class="appendix-right">
+                        {% for gene_l in script_rna %}
+                        <div class="gene-list">
+                            {% for gene_s in gene_l %}
+                            <div class="gene-one-name">{{ gene_s }}</div>
+                            <div class="gene-one-script">&nbsp</div>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover">
+        <div class="block-result">
+            <div class='info-title' style="width: 25%">附录C：迈景{{ item }}基因解读</div>
+            <div class="gene-list-table">
+                <div class="gene-list-thead">
+                    <div class="gene-list-gene">基因</div>
+                    <div class="gene-list-trait">基因功能特点</div>
+                    <div class="gene-list-relationship">基因与肿瘤的关系</div>
+                </div>
+                <div class="gene-list-tbody gene-list-tbody-one">
+                    <div class="gene-list-gene">{{ gene_list_one['基因'] }}</div>
+                    <div class="gene-list-trait">{{ gene_list_one['基因功能特点'] }}</div>
+                    <div class="gene-list-relationship">{{ gene_list_one['基因与肿瘤的关系'] }}</div>
+                </div>
+                {% for gene_list_one in gene_list %}
+                <div class="gene-list-tbody">
+                    <div class="gene-list-gene">{{ gene_list_one['基因'] }}</div>
+                    <div class="gene-list-trait">{{ gene_list_one['基因功能特点'] }}</div>
+                    <div class="gene-list-relationship">{{ gene_list_one['基因与肿瘤的关系'] }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class='info-title' style="width: 38%">附录D：样本基因变异的靶向用药指南</div>
+    <div class="cover">
+        <div class="block-result">
+            <div>
+                <div class="okr-title">样本基因变异及治疗方案概要</div>
+                <div class="okr-cancer">样本癌症类型:&nbsp {{ cancer_okr }}</div>
+                <div class="note-okr-icon">
+                    <div class="note-okr-icon-cell">
+                        <img class="okr-icon" src="/static/img/在当前癌症类型中.jpg" alt="img">
+                        在当前癌症类型中
+                    </div>
+                    <div class="note-okr-icon-cell">
+                        <img class="okr-icon" src="/static/img/在其他癌症类型中.jpg" alt="img">
+                        在其他癌症类型中
+                    </div>
+                    <div class="note-okr-icon-cell">
+                        <img class="okr-icon" src="/static/img/在当前及其他癌症类型中.jpg" alt="img">
+                        在当前及其他癌症类型中
+                    </div>
+                    <div class="note-okr-icon-cell">
+                        <img class="okr-icon" src="/static/img/禁忌症.jpg" alt="img">
+                        禁忌症
+                    </div>
+                    <div class="note-okr-icon-cell">
+                        <img class="okr-icon" src="/static/img/适用及禁忌症.jpg" alt="img">
+                        适用及禁忌症
+                    </div>
+                    <div class="note-okr-icon-cell">
+                        <img class="okr-icon" src="/static/img/无证据.jpg" alt="img">
+                        无证据
+                    </div>
+                </div>
+                <div class="table-okr">
+                    <div class="thead-okr">
+                        <div class="okr-gene">基因变异</div>
+                        <div class="okr-fda-h">US-FDA</div>
+                        <div class="okr-fda-h">US-NCCN</div>
+                        <div class="okr-fda-h">EMA</div>
+                        <div class="okr-fda-h">ESMO</div>
+                        <div class="okr-fda-h">Global Clinical Trials</div>
+                    </div>
+                    {% for fda in list_okr %}
+                    <div class="tbody-okr">
+                        <div class="okr-gene">{{ fda["基因组改变"][0] }}</div>
+                        <div class="okr-fda">
+                            <img class="okr-icon" src="/static/img/{{ fda['FDA'][0] }}.jpg" alt="img">
+                            {{ fda["FDA"][1] }}
+                        </div>
+                        <div class="okr-fda">
+                            <img class="okr-icon" src="/static/img/{{ fda['NCCN'][0] }}.jpg" alt="img">
+                            {{ fda["NCCN"][1] }}
+                        </div>
+                        <div class="okr-fda">
+                            <img class="okr-icon" src="/static/img/{{ fda['EMA'][0] }}.jpg" alt="img">
+                            {{ fda["EMA"][1] }}
+                        </div>
+                        <div class="okr-fda">
+                            <img class="okr-icon" src="/static/img/{{ fda['ESMO'][0] }}.jpg" alt="img">
+                            {{ fda["ESMO"][1] }}
+                        </div>
+                        <div class="okr-fda">
+                            <img class="okr-icon" src="/static/img/{{ fda['Clinical Trials'][0] }}.jpg" alt="img">
+                            {{ fda["Clinical Trials"][1] }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover">
+        <div class="block-result">
+            <div class="okr-title">基因变异相应靶向治疗方案</div>
+            <div class="note-okr-icon">
+                <div class="note-okr-icon-cell">
+                    <img class="okr-icon" src="/static/img/在当前癌症类型中.jpg" alt="img">
+                    在当前癌症类型中
+                </div>
+                <div class="note-okr-icon-cell">
+                    <img class="okr-icon" src="/static/img/在其他癌症类型中.jpg" alt="img">
+                    在其他癌症类型中
+                </div>
+                <div class="note-okr-icon-cell">
+                    <img class="okr-icon" src="/static/img/在当前及其他癌症类型中.jpg" alt="img">
+                    在当前及其他癌症类型中
+                </div>
+                <div class="note-okr-icon-cell">
+                    <img class="okr-icon" src="/static/img/禁忌症.jpg" alt="img">
+                    禁忌症
+                </div>
+                <div class="note-okr-icon-cell">
+                    <img class="okr-icon" src="/static/img/适用及禁忌症.jpg" alt="img">
+                    适用及禁忌症
+                </div>
+                <div class="note-okr-icon-cell">
+                    <img class="okr-icon" src="/static/img/无证据.jpg" alt="img">
+                    无证据
+                </div>
+            </div>
+            {% for mu in mu_target %}
+            <div>{{ mu }}</div>
+            <div class="table-okr">
+                <div class="thead-okr">
+                    <div class="okr-gene">相应治疗</div>
+                    <div class="okr-fda-h">FDA</div>
+                    <div class="okr-fda-h">NCCN</div>
+                    <div class="okr-fda-h">EMA</div>
+                    <div class="okr-fda-h">ESMO</div>
+                    <div class="okr-fda-h">临床试验*</div>
+                </div>
+                {% for targ in dic_target[mu] %}
+                <div class="tbody-okr">
+                    <div class="okr-gene">{{ targ['相应治疗'] }}</div>
+                    <div class="okr-fda">
+                        <img class="okr-icon" src="/static/img/{{ targ['FDA'] }}.jpg" alt="img">
+                    </div>
+                    <div class="okr-fda">
+                        <img class="okr-icon" src="/static/img/{{ targ['NCCN'] }}.jpg" alt="img">
+                    </div>
+                    <div class="okr-fda">
+                        <img class="okr-icon" src="/static/img/{{ targ['EMA'] }}.jpg" alt="img">
+                    </div>
+                    <div class="okr-fda">
+                        <img class="okr-icon" src="/static/img/{{ targ['ESMO'] }}.jpg" alt="img">
+                    </div>
+                    <div class="okr-fda">
+                        <img class="okr-icon" src="/static/img/{{ targ['Clinical Trials'] }}.jpg" alt="img">
+                        {% if targ['分期'] %}
+                        ({{ targ['分期'] }})
+                        {% else %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ targ['分期'] }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="okr-title"><b>相关疗法详情</b></div>
+
+    <!--okr 图标注释-->
+    <div class="note-okr-icon">
+        <div class="note-okr-icon-cell">
+            <img class="okr-icon" src="/static/img/在当前癌症类型中.jpg" alt="img">
+            在当前癌症类型中
+        </div>
+        <div class="note-okr-icon-cell">
+            <img class="okr-icon" src="/static/img/在其他癌症类型中.jpg" alt="img">
+            在其他癌症类型中
+        </div>
+        <div class="note-okr-icon-cell">
+            <img class="okr-icon" src="/static/img/在当前及其他癌症类型中.jpg" alt="img">
+            在当前及其他癌症类型中
+        </div>
+        <div class="note-okr-icon-cell">
+            <img class="okr-icon" src="/static/img/禁忌症.jpg" alt="img">
+            禁忌症
+        </div>
+        <div class="note-okr-icon-cell">
+            <img class="okr-icon" src="/static/img/适用及禁忌症.jpg" alt="img">
+            适用及禁忌症
+        </div>
+        <div class="note-okr-icon-cell">
+            <img class="okr-icon" src="/static/img/不推荐.jpg" alt="img">
+            不推荐
+        </div>
+        <div class="note-okr-icon-cell">
+            <img class="okr-icon" src="/static/img/抗药性.jpg" alt="img">
+            抗药性
+        </div>
+    </div>
+    {% if dic_thee['目前来自FDA 靶向药物信息'] %}
+    <div class="cover">
+        <div class="block-result">
+            <div class="okr-title">目前来自FDA 靶向药物信息</div>
+            <div class="okr-time">FDA信息更新至{{ dic_time['目前来自FDA 靶向药物信息'] }},获取最新信息,请检索 www.fda.gov。</div>
+            {% for mu in mu_target %}
+            <div class="therapy-title">{{ mu }}</div>
+            {% for fda_the in dic_thee['目前来自FDA 靶向药物信息'][mu] %}
+            <div class="fda-the">
+                <div class="okr-fda-therapy">
+                    <div class="okr-fda-therapy-title">
+                        <img class="okr-icon" src="/static/img/{{ fda_the['适应症状态'] }}.jpg" alt="img">
+                        {{ fda_the['相应治疗'] }}
+                    </div>
+                    <div class="okr-fda-therapy-content">
+                        <div class="okr-fda-therapy-table">
+                            <div class="okr-fda-therapy-gene">癌症类型: {{ fda_the['癌症类型'] }}</div>
+                            <div class="okr-fda-therapy-gene">标签（截至...）: {{ fda_the['标签（截至...）'] }}</div>
+                            <div class="okr-fda-therapy-gene">基因变异分类: {{ fda_the['基因变异分类'] }}</div>
+                        </div>
+                        <div>适应症及用法:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['适应症及用法'] }}</div>
+                        <div>参考文献:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['参考文献'] }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if dic_thee['目前来自NCCN 靶向药物信息'] %}
+    <div class="cover">
+        <div class="block-result">
+            <div class="okr-title">目前来自NCCN 靶向药物信息</div>
+            <div class="okr-time">
+                NCCN 信息更新至{{ dic_time['目前来自NCCN 靶向药物信息'] }},获取最新信息,请检索 www.nccn.org
+                获取美国国家综合癌症网络 (NCCN) 国际适用 & 翻译版本,请登录 www.nccn.org/global/international_adaptations.aspx 搜索。
+            </div>
+            {% for mu in mu_target %}
+            <div class="therapy-title">{{ mu }}</div>
+            {% for fda_the in dic_thee['目前来自NCCN 靶向药物信息'][mu] %}
+            <div class="fda-the">
+                <div class="okr-fda-therapy">
+                    <div class="okr-fda-therapy-title">
+                        <img class="okr-icon" src="/static/img/{{ fda_the['适应症状态'] }}.jpg" alt="img">
+                        {{ fda_the['相应治疗'] }}
+                    </div>
+                    <div class="okr-fda-therapy-content">
+                        <div class="okr-fda-therapy-table">
+                            <div class="okr-fda-therapy-nccn">癌症类型: {{ fda_the['癌症类型'] }}</div>
+                            <div class="okr-fda-therapy-nccn">基因变异分类: {{ fda_the['基因变异分类'] }}</div>
+                        </div>
+                        {% if fda_the['NCCN 推荐类别'] %}
+                        <div class="okr-fda-therapy-tag">NCCN 推荐类别: {{ fda_the['NCCN 推荐类别'] }}</div>
+                        <div>人群范围（治疗人群）:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['人群范围（治疗人群）'] }}</div>
+                        {% elif fda_the['其他标准'] %}
+                        <div class="okr-fda-therapy-tag">其他标准: {{ fda_the['其他标准'] }}</div>
+                        <div>概要:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['概要'] }}</div>
+                        {% else %}
+                        <div>概要:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['概要'] }}</div>
+                        {% endif %}
+                        <div>参考文献:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['参考文献'] }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if dic_thee['目前来自EMA 靶向药物信息'] %}
+    <div class="cover">
+        <div class="block-result">
+            <div class="okr-title">目前来自EMA 靶向药物信息</div>
+            <div class="okr-time">
+                EMA 信息更新至{{ dic_time['目前来自EMA 靶向药物信息'] }},获取最新信息,请检索 www.ema.europa.eu/ema
+            </div>
+            {% for mu in mu_target %}
+            <div class="therapy-title">{{ mu }}</div>
+            {% for fda_the in dic_thee['目前来自EMA 靶向药物信息'][mu] %}
+            <div class="fda-the">
+                <div class="okr-fda-therapy">
+                    <div class="okr-fda-therapy-title">
+                        <img class="okr-icon" src="/static/img/{{ fda_the['适应症状态'] }}.jpg" alt="img">
+                        {{ fda_the['相应治疗'] }}
+                    </div>
+                    <div class="okr-fda-therapy-content">
+                        <div class="okr-fda-therapy-table">
+                            <div class="okr-fda-therapy-gene">癌症类型: {{ fda_the['癌症类型'] }}</div>
+                            <div class="okr-fda-therapy-gene">标签（截至...）: {{ fda_the['标签（截至...）'] }}</div>
+                            <div class="okr-fda-therapy-gene">基因变异分类: {{ fda_the['基因变异分类'] }}</div>
+                        </div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['参考文献'] }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if dic_thee['目前来自ESMO 靶向药物信息'] %}
+    <div class="cover">
+        <div class="block-result">
+            <div class="okr-title">目前来自ESMO 靶向药物信息</div>
+            <div class="okr-time">
+                ESMO 信息更新至{{ dic_time['目前来自ESMO 靶向药物信息'] }},获取最新信息,请检索 www.esmo.org
+            </div>
+            {% for mu in mu_target %}
+            <div class="therapy-title">{{ mu }}</div>
+            {% for fda_the in dic_thee['目前来自ESMO 靶向药物信息'][mu] %}
+            <div class="fda-the">
+                <div class="okr-fda-therapy">
+                    <div class="okr-fda-therapy-title">
+                        <img class="okr-icon" src="/static/img/{{ fda_the['适应症状态'] }}.jpg" alt="img">
+                        {{ fda_the['相应治疗'] }}
+                    </div>
+                    <div class="okr-fda-therapy-content">
+                        <div class="okr-fda-therapy-table">
+                            <div class="okr-fda-therapy-nccn">癌症类型: {{ fda_the['癌症类型'] }}</div>
+                            <div class="okr-fda-therapy-nccn">基因变异分类: {{ fda_the['基因变异分类'] }}</div>
+                        </div>
+                        {% if fda_the['ESMO 证据水平/推荐等级'] %}
+                        <div class="okr-fda-therapy-tag">ESMO 证据水平/推荐等级: {{ fda_the['ESMO 证据水平/推荐等级'] }}</div>
+                        <div>人群范围（治疗人群）:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['人群范围（治疗人群）'] }}</div>
+                        {% elif fda_the['其他标准'] %}
+                        <div class="okr-fda-therapy-tag">其他标准: {{ fda_the['其他标准'] }}</div>
+                        <div>概要:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['概要'] }}</div>
+                        {% else %}
+                        <div>概要:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['概要'] }}</div>
+                        {% endif %}
+                        <div>参考文献:</div>
+                        <div class="okr-fda-therapy-tag">{{ fda_the['参考文献'] }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if dic_thee['目前来自Clinical Trials 靶向药物信息'] %}
+    <div class="cover">
+        <div class="block-result">
+            <div class="okr-title">目前来自Clinical Trials 靶向药物信息</div>
+            <div class="okr-time">
+                Clinical Trials(全球开展的靶向药物临床测试)信息更新至{{ dic_time['目前来自Clinical Trials 靶向药物信息'] }}。获取某一特定试验的最新信息,请登录
+                www.clinicaltrials.gov 按照 NCT ID 编号或“Other identifiers”(其他识别信息)中列出的地区识别信息,在当地临床试验权威机构网站搜索。
+            </div>
+            {% for mu in mu_target %}
+            <div class="therapy-title">{{ mu }}</div>
+            {% for fda_the in dic_thee['目前来自Clinical Trials 靶向药物信息'][mu] %}
+            <div class="fda-the">
+                <div class="okr-fda-therapy">
+                    <div class="okr-fda-therapy-title">
+                        {% if fda_the['NCT ID 编号'] %}
+                        {{ fda_the['NCT ID 编号'] }}
+                        {% else %}
+                        无NCTID编号-参见其他识别信息
+                        {% endif %}
+                    </div>
+                    <div class="okr-fda-therapy-content">
+                        <div class="okr-fda-therapy-name">{{ fda_the['名称'] }}</div>
+                        <div class="okr-fda-therapy-table">
+                            <div class="okr-fda-therapy-table-row">
+                                <div class="okr-fda-therapy-clinical">癌症类型: {{ fda_the['癌症类型'] }}</div>
+                                <div class="okr-fda-therapy-clinical">基因变异分类: {{ fda_the['基因变异分类'] }}</div>
+                            </div>
+                            <div class="okr-fda-therapy-table-row">
+                                <div class="okr-fda-therapy-clinical">其他识别信息: {{ fda_the['其他识别信息'] }}</div>
+                                <div class="okr-fda-therapy-clinical">人群范围: {{ fda_the['人群范围'] }}</div>
+                            </div>
+                            <div class="okr-fda-therapy-table-row">
+                                {% if fda_the['基因变异分类排除标准'] %}
+                                <div class="okr-fda-therapy-clinical">基因变异分类排除标准: {{ fda_the['基因变异分类排除标准'] }}</div>
+                                <div class="okr-fda-therapy-clinical">分期: {{ fda_the['分期'] }}</div>
+                                {% else %}
+                                <div class="okr-fda-therapy-clinical">分期: {{ fda_the['分期'] }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="okr-fda-therapy-table-row">
+                                <div class="okr-fda-therapy-clinical">治疗: {{ fda_the['治疗'] }}</div>
+                                <div class="okr-fda-therapy-clinical">地点: {{ fda_the['地点'] }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

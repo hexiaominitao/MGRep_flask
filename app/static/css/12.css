@@ -1,0 +1,505 @@
+#mg_code {
+    string-set: mg content();
+}
+
+#rep_date {
+    string-set: date content();
+}
+
+.info-content {
+    margin-top: 2%;
+}
+
+.info-title {
+    font: 700 11pt/40px '阿里巴巴普惠体';
+    color: aliceblue;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(55, 96, 146);
+    height: 40px;
+    margin: 2% 88% 2% 1%;
+}
+
+
+/*基本信息*/
+.table-border {
+    padding-top: 1%;
+    border-top: solid 1.5px rgb(55, 96, 146);
+    border-bottom: solid 1.5px rgb(55, 96, 146);
+}
+
+.table-info {
+    display: table;
+}
+
+.tbody-info {
+    display: table-row;
+    height: 26px;
+}
+
+.item {
+    font: 700 10pt '阿里巴巴普惠体';
+    display: table-cell;
+    width: 12%;
+}
+
+.cell {
+    font: 400 10pt '阿里巴巴普惠体';
+    display: table-cell;
+    width: 23%;
+}
+
+.item-info-4 {
+    width: 15%;
+}
+
+.last-tr {
+    border-top: dashed 1px rgb(55, 96, 146);
+}
+
+.seq-content {
+    /*margin-top: 2%;*/
+    margin-left: 1%;
+    text-indent: 30px;
+    font: 400 10pt/15pt '阿里巴巴普惠体';
+}
+
+.statement {
+    margin-bottom: 10%;
+    margin-top: -1%;
+    padding-top: 1%;
+    font: 300 8pt '阿里巴巴普惠体';
+}
+
+
+.table {
+    margin: 0 auto;
+    border-top: solid 1.5px rgb(55, 96, 146);
+    border-bottom: solid 1.5px rgb(55, 96, 146);
+}
+
+.thead {
+    margin: 1% auto -1%;
+    padding-bottom: 1%;
+    font: 700 10pt "阿里巴巴普惠体";
+    text-align: center;
+    border-bottom: solid 0.5px rgb(55, 96, 146);
+    display: table;
+    width: 100%;
+}
+
+.tbody-none {
+    margin: 1% auto;
+    font: 400 10pt "阿里巴巴普惠体";
+    text-align: center;
+    padding-top: 1%;
+    border-top: solid 0.5px rgb(55, 96, 146);
+}
+
+.tbody {
+    font: 400 10pt "阿里巴巴普惠体";
+    margin: 1% auto;
+    padding-top: 1%;
+    text-align: center;
+    border-top: dashed 1px rgb(55, 96, 146);
+    display: table;
+    width: 100%;
+    page-break-inside: avoid;
+}
+
+.tbody-one {
+    border-top: solid 0.5px rgb(55, 96, 146);
+    display: table;
+    width: 100%;
+}
+
+.gene {
+    display: table-cell;
+    width: 10%;
+    vertical-align: middle;
+}
+
+.type {
+    display: table-cell;
+    width: 15%;
+    vertical-align: middle;
+}
+
+.gene-result {
+    width: 75%;
+    clear: both;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+/*.gene-table {*/
+/*display: table;*/
+/*margin: auto;*/
+/*}*/
+
+.gene-result-1 {
+    display: table;
+    margin: auto;
+}
+
+.gene-result-2 {
+    display: table;
+    margin: auto;
+    border-top: dashed 1px rgb(55, 96, 146);
+}
+
+.result-1 {
+    /*float: left;*/
+    width: 35%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    padding: 1% 0;
+
+}
+
+.percent-1 {
+    /*float: left;*/
+    width: 10%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.name_mu-1 {
+    /*float: left;*/
+    width: 20%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.grade_mu-1 {
+    /*float: left;*/
+    width: 10%;
+    margin-right: 0;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.result {
+    display: table-cell;
+    width: 35%;
+    vertical-align: middle;
+}
+
+.percent {
+    display: table-cell;
+    width: 10%;
+    vertical-align: middle;
+}
+
+.name_mu {
+    display: table-cell;
+    width: 20%;
+    vertical-align: middle;
+}
+
+.grade_mu {
+    display: table-cell;
+    width: 10%;
+    vertical-align: middle;
+}
+
+.note-result {
+    margin: 1%;
+    font: 400 9pt '阿里巴巴普惠体';
+}
+
+.note-title {
+    color: red;
+}
+
+.seqer {
+    float: left;
+    margin-top: 5%;
+    margin-left: 20%;
+    width: 40%;
+    font: 700 10pt '阿里巴巴普惠体';
+}
+
+.checker {
+    float: left;
+    margin-top: 5%;
+    width: 35%;
+    font: 700 10pt '阿里巴巴普惠体';
+}
+
+.block-result {
+    margin: 2% auto;
+    clear: both;
+}
+
+.content-title {
+    font: 700 10pt '阿里巴巴普惠体';
+    margin-bottom: 2%;
+}
+
+.code-number {
+    float: left;
+    width: 4%;
+    margin-left: 1%;
+    padding-right: -1%;
+}
+
+.limit-content {
+    display: table;
+}
+
+.note-content-1 {
+    font: 400 10pt/15pt '阿里巴巴普惠体';
+    float: left;
+    width: 96%;
+    margin-left: -2%;
+}
+
+.appendix-title {
+    text-align: center;
+    font: 400 10pt '阿里巴巴普惠体';
+}
+
+
+.tbody-appendix {
+    font: 400 10pt "阿里巴巴普惠体";
+    margin: 1% auto;
+    padding-top: 1%;
+    text-align: center;
+    border-top: solid 0.7px rgb(55, 96, 146);
+    display: table;
+    width: 100%;
+}
+
+.appendix-left {
+    /*float: left;*/
+    width: 15%;
+    margin: auto;
+    margin-left: 1%;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font: 700 10pt '阿里巴巴普惠体';
+}
+
+.appendix-right {
+    width: 100%;
+    float: left;
+    /*margin: 1% auto;*/
+    margin: auto;
+}
+
+
+.gene-one-name {
+    float: left;
+    width: 16%;
+    font-weight: 700;
+}
+
+.gene-one-script {
+    float: left;
+    width: 17%;
+}
+
+.gene-list {
+    font: 400 9pt/15pt '阿里巴巴普惠体';
+}
+
+.table-okr {
+    margin-top: 2%;
+}
+
+.thead-okr {
+    font: 700 8pt "阿里巴巴普惠体";
+    border-bottom: solid 1px rgb(55, 96, 146);
+    text-align: center;
+    display: table;
+    width: 100%;
+    padding-bottom: 1%;
+}
+
+.tbody-okr {
+    font: 400 9pt "阿里巴巴普惠体";
+    text-align: center;
+    border-bottom: solid 1px rgb(55, 96, 146);
+    display: table;
+    width: 100%;
+}
+
+.okr-gene {
+    display: table-cell;
+    width: 45%;
+    text-align: left;
+    vertical-align: middle;
+    padding: 1%;
+}
+
+.okr-fda-h {
+    display: table-cell;
+    width: 9%;
+    vertical-align: middle;
+}
+
+.okr-fda {
+    display: table-cell;
+    width: 9%;
+    vertical-align: middle;
+    padding: 1%;
+    border-left: solid 1px rgb(55, 96, 146);
+    font: 400 12pt "阿里巴巴普惠体";
+}
+
+.gene-list-table {
+    border-top: solid 1.5px rgb(55, 96, 146);
+    border-bottom: solid 1.5px rgb(55, 96, 146);
+}
+
+.gene-list-thead {
+    font: 700 10pt/15pt "阿里巴巴普惠体";
+    border-bottom: solid 0.5px rgb(55, 96, 146);
+    text-align: center;
+    display: table;
+    width: 100%;
+}
+
+.gene-list-tbody {
+    font: 400 10pt "阿里巴巴普惠体";
+    text-align: center;
+    border-top: solid 1px rgb(55, 96, 146);
+    display: table;
+    width: 100%;
+}
+
+.gene-list-tbody-one {
+    border-top: solid 0.5px rgb(55, 96, 146);
+    display: table;
+    width: 100%;
+}
+
+.gene-list-gene {
+    display: table-cell;
+    width: 10%;
+    vertical-align: middle;
+    border-right: solid 0.5px rgb(55, 96, 146);
+    padding: 1%;
+}
+
+.gene-list-trait {
+    display: table-cell;
+    width: 38%;
+    text-align: left;
+    text-indent: 30px;
+    font: 400 10pt/15pt "阿里巴巴普惠体";
+    vertical-align: middle;
+    border-right: solid 0.5px rgb(55, 96, 146);
+    padding: 1%;
+}
+
+.gene-list-relationship {
+    display: table-cell;
+    margin-left: 1%;
+    width: 50%;
+    text-align: left;
+    text-indent: 30px;
+    font: 400 10pt/15pt "阿里巴巴普惠体";
+    vertical-align: middle;
+    padding: 1%;
+}
+
+.okr-icon {
+    width: 12pt;
+    height: 12pt;
+}
+
+.okr-title {
+    font: 400 16pt '阿里巴巴普惠体';
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.okr-cancer {
+    font: 400 10pt '阿里巴巴普惠体';
+    margin-bottom: 4%;
+}
+
+.therapy-title {
+    font: 700 12pt '阿里巴巴普惠体';
+    margin-bottom: 4%;
+}
+
+.okr-fda-therapy {
+    /*margin: auto 1%;*/
+    padding-bottom: 1%;
+    border-bottom: solid 2px rgb(55, 96, 146);
+    margin-bottom: 3%;
+    page-break-inside: avoid;
+}
+
+.okr-fda-therapy-title {
+    font: 700 12pt/12pt '阿里巴巴普惠体';
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.okr-fda-therapy-content {
+    margin: auto 1%;
+    font: 400 10pt '阿里巴巴普惠体';
+}
+
+.okr-fda-therapy-table {
+    display: table;
+    font: 400 10pt '阿里巴巴普惠体';
+    margin-bottom: 2%;
+}
+
+.okr-fda-therapy-gene {
+    display: table-cell;
+    width: 33%;
+}
+
+.okr-fda-therapy-nccn {
+    display: table-cell;
+    width: 50%;
+}
+
+.okr-fda-therapy-ema {
+    display: table-cell;
+}
+
+.okr-fda-therapy-tag {
+    margin: 1%;
+
+}
+
+.okr-fda-therapy-name {
+    margin: 1% auto;
+}
+
+.okr-fda-therapy-table-row {
+    display: table-row;
+}
+
+.okr-fda-therapy-clinical {
+    display: table-cell;
+    width: 50%;
+    padding: 2px;
+}
+
+.note-okr-icon {
+    display: table;
+    font: 400 8pt '阿里巴巴普惠体';
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+.note-okr-icon-cell {
+    display: table-cell;
+    padding: 1%;
+}
+
+.okr-time {
+    font: 400 8pt '阿里巴巴普惠体';
+    margin: 2% 1%;
+}

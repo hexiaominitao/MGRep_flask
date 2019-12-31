@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IGV test in web!!!!</title>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.3.5/dist/igv.min.js"></script>
+</head>
+<body>
+<div class="igv-div"></div>
+<script>
+    var igvDiv = document.getElementById("igv-div");
+    var options =
+        {
+            genome: "hg19",
+            locus: "chr8:127,736,588-127,739,371",
+            tracks: [
+                {
+                    "name": "test",
+                    "url": "static/data/test.bam",
+                    "indexURL": "static/data/test.bai",
+                    "format": "bam"
+                }
+            ]
+        };
+
+    igv.createBrowser(igvDiv, options)
+        .then(function (browser) {
+            console.log("Created IGV browser");
+        })
+</script>
+</body>
+</html>

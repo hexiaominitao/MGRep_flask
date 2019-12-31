@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>迈景基因检测报告_{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base_report.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
